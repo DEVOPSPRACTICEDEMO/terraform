@@ -1,94 +1,72 @@
 variable "ami_id" {
-  type        = string
-  default     = "ami-09c813fb71547fc4f"
-  description = "AMI ID of devops-practice RHEL9"
+    type = string
+    default = "ami-09c813fb71547fc4f"
+    description = "AMI ID of devops-practice RHEL9"
 }
 
 variable "instance_type" {
-  default = "t3.micro"
+    default = "t3.micro"  
 }
 
 variable "ec2_tags" {
-  type = map(string)
-  default = {
-    Name    = "ec2-using-terraform"
-    Purpose = "Variables-demo"
-  }
+    type = map(string)
+    default = {
+        Name = "ec2-using-terraform"
+        Purpose = "Variables-demo"
+    }
 }
 
 variable "sg_name" {
-  default = "allow-all"
-
+    default = "allow-all"
+  
 }
 
 variable "sg_description" {
-  default = "allowing all ports from internet"
+    default = "allowing all ports from internet"  
 }
 
 variable "from_port" {
-  default = 0
+    default = 0
 }
 
 variable "to_port" {
-  type    = number
-  default = 0
+    type = number
+    default = 0 
 }
 
 variable "cidr_blocks" {
-  type    = list(string)
-  default = ["0.0.0.0/0"]
+    type = list(string)
+    default = [ "0.0.0.0/0" ]  
 }
 
 variable "sg_tags" {
-  default = {
-    Name = "allow-all"
-  }
+    default = {
+        Name = "allow-all"
+    } 
 }
 
 variable "environment" {
-  default = "prod"
+    default = "prod"  
 }
 
 variable "instances" {
-  default = {
-    mongodb  = "t3.micro" # each keyword is assigned for every iteration, you will get each.key and each.value
-    frontend = "t3.micro"
-    rabbitmq = "t3.micro"
-    mysql    = "t3.small"
-  }
-
+    default = ["mongodb", "redis", "frontend", "Rabbitmq"]
+  
 }
 
 variable "zone_id" {
-  default = "Z07092431FXHTW58PX8NM"
-
+    default = "Z07092431FXHTW58PX8NM"
+  
 }
 
 variable "domain_name" {
-  default = "skptech.site"
-}
-
-variable "ingress_ports" {
-
-  default = [ #list(map)
-    {
-      from_port = 22
-      to_port   = 22
-    },
-    {
-      from_port = 80
-      to_port   = 80
-    },
-    {
-      from_port = 8080
-      to_port   = 8080
-    }
-  ]
+    default = "skptech.site"  
 }
 
 variable "common_tags" {
-  default = {
-    Project = "roboshop"
-    Terraform = "true"
-  }
+    default = {
+        Project = "roboshop"
+        Terraform = "true"
+    }
+  
 }
